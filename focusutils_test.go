@@ -19,10 +19,10 @@ func TestEmptyImages(t *testing.T) {
 func TestBadLoad(t *testing.T) {
 	s := InitTestServer()
 	s.dsClient.ErrorCode = make(map[string]codes.Code)
-	s.dsClient.ErrorCode[CONFIG] = codes.DataLoss
+	s.dsClient.ErrorCode[CONFIG] = codes.InvalidArgument
 
 	config, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
-	if err == nil {
-		t.Errorf("Should have failed: %v", config)
+	if err != nil {
+		t.Errorf("Should not have failed: %v, %v", config, err)
 	}
 }
