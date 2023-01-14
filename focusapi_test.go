@@ -7,6 +7,8 @@ import (
 	pb "github.com/brotherlogic/focus/proto"
 	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
 	recordcollection_client "github.com/brotherlogic/recordcollection/client"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func InitTestServer() *Server {
@@ -33,9 +35,10 @@ func TestGetRecordCleanerFocusSucceeds(t *testing.T) {
 func TestGeRecordCleanerFocusFailsOnClean(t *testing.T) {
 	s := InitTestServer()
 	s.foci = []FocusBuilder{s.getRecordCleaningFocus}
+	s.cleanerClient.ErrorCode = codes.Unknown
 
 	r, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
-	if err == nil {
+	if status.Code(err) != codes.OutOfRange {
 		t.Errorf("Expected this to fail on call to record cleaner: %v", r)
 	}
 }
