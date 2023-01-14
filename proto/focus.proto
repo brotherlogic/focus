@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package focus;
+
+option go_package = "github.com/brotherlogic/focus/proto";
+
+message Focus {
+    enum FocusType {
+        UNKNOWN = 0;
+        FOCUS_ON_RECORD_CLEANING = 1;
+    }
+
+    FocusType type = 1;
+    string detail = 2;
+    string link = 3;
+}
+
+message GetFocusRequest{}
+message GetFocusResponse{
+    Focus focus = 1;
+}
+
+service FocusService {
+    rpc GetFocus (GetFocusRequest) returns (GetFocusResponse);
+}
