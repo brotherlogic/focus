@@ -4,6 +4,11 @@ package focus;
 
 option go_package = "github.com/brotherlogic/focus/proto";
 
+message Config {
+    string date = 1;
+    int32 home_count = 2;
+}
+
 message Focus {
     enum FocusType {
         UNKNOWN = 0;
