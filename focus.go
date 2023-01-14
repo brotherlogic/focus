@@ -7,18 +7,23 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
+	pb "github.com/brotherlogic/focus/proto"
 	pbg "github.com/brotherlogic/goserver/proto"
 )
+
+type FocusBuilder = func(context.Context) (*pb.Focus, error)
 
 // Server main server type
 type Server struct {
 	*goserver.GoServer
+	foci []FocusBuilder
 }
 
 // Init builds the server
 func Init() *Server {
 	s := &Server{
 		GoServer: &goserver.GoServer{},
+		foci:     []FocusBuilder{},
 	}
 	return s
 }
@@ -45,6 +50,7 @@ func (s *Server) Mote(ctx context.Context, master bool) error {
 
 // GetState gets the state of the server
 func (s *Server) GetState() []*pbg.State {
+	return []*pbg.State{}
 }
 
 func main() {
