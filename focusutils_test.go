@@ -4,6 +4,7 @@ import (
 	"context"
 	"testing"
 
+	pb "github.com/brotherlogic/focus/proto"
 	"github.com/brotherlogic/godiscogs"
 	"google.golang.org/grpc/codes"
 )
@@ -20,7 +21,7 @@ func TestBadLoad(t *testing.T) {
 	s.dsClient.ErrorCode = make(map[string]codes.Code)
 	s.dsClient.ErrorCode[CONFIG] = codes.DataLoss
 
-	config, err := s.load(context.Background())
+	config, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
 	if err == nil {
 		t.Errorf("Should have failed: %v", config)
 	}
