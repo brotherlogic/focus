@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/codes"
@@ -28,8 +27,6 @@ func (s *Server) GetFocus(ctx context.Context, req *pb.GetFocusRequest) (*pb.Get
 			return &pb.GetFocusResponse{Focus: focus}, nil
 		}
 	}
-
-	log.Printf("reached here")
 
 	return nil, status.Errorf(codes.OutOfRange, "No focus found")
 }

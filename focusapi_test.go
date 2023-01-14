@@ -42,3 +42,14 @@ func TestGeRecordCleanerFocusFailsOnClean(t *testing.T) {
 		t.Errorf("Expected this to fail on call to record cleaner: %v", r)
 	}
 }
+
+func TestGeRecordCleanerFocusFailsOnRecord(t *testing.T) {
+	s := InitTestServer()
+	s.foci = []FocusBuilder{s.getRecordCleaningFocus}
+	s.rccClient.ErrorCode = codes.Unknown
+
+	r, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
+	if status.Code(err) != codes.OutOfRange {
+		t.Errorf("Expected this to fail on call to record collection: %v", r)
+	}
+}
