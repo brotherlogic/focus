@@ -30,6 +30,7 @@ func Init() *Server {
 		GoServer: &goserver.GoServer{},
 	}
 	s.cleanerClient = &recordcleaner_client.RecordCleanerClient{Gs: s.GoServer}
+	s.rccClient = &recordcollection_client.RecordCollectionClient{Gs: s.GoServer}
 
 	s.foci = []FocusBuilder{s.getRecordCleaningFocus}
 	return s
