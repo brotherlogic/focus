@@ -7,17 +7,12 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	dstore_client "github.com/brotherlogic/dstore/client"
-	github_client "github.com/brotherlogic/githubcard/client"
-
 	pbg "github.com/brotherlogic/goserver/proto"
 )
 
 // Server main server type
 type Server struct {
 	*goserver.GoServer
-	dclient  *dstore_client.DStoreClient
-	ghclient *github_client.GHClient
 }
 
 // Init builds the server
@@ -25,8 +20,6 @@ func Init() *Server {
 	s := &Server{
 		GoServer: &goserver.GoServer{},
 	}
-	s.dclient = &dstore_client.DStoreClient{Gs: s.GoServer}
-	s.ghclient = &github_client.GHClient{Gs: s.GoServer}
 	return s
 }
 
@@ -52,9 +45,6 @@ func (s *Server) Mote(ctx context.Context, master bool) error {
 
 // GetState gets the state of the server
 func (s *Server) GetState() []*pbg.State {
-	return []*pbg.State{
-		&pbg.State{Key: "magic", Value: int64(12345)},
-	}
 }
 
 func main() {
