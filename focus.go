@@ -16,7 +16,6 @@ import (
 
 	pbg "github.com/brotherlogic/goserver/proto"
 	"github.com/brotherlogic/goserver/utils"
-	pb "github.com/brotherlogic/tasklist/proto"
 )
 
 // Server main server type
