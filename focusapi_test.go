@@ -35,6 +35,10 @@ func TestGetRecordCleanerFocusSucceeds(t *testing.T) {
 	if res.GetFocus().GetType() != pb.Focus_FOCUS_ON_RECORD_CLEANING {
 		t.Errorf("Bad focus: %v", res)
 	}
+
+	if len(res.Focus.GetLink()) == 0 {
+		t.Errorf("No link: %v", res)
+	}
 }
 
 func TestGeRecordCleanerFocusFailsOnClean(t *testing.T) {
