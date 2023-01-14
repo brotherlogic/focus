@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/brotherlogic/dstore v0.0.0-20230108103035-94e9284d0601
-	github.com/brotherlogic/githubcard v0.0.0-20230114200445-23c29665f94b
+	github.com/brotherlogic/githubcard v0.0.0-20230114203411-e50866a166c9
 	github.com/brotherlogic/godiscogs v0.0.0-20230104162206-2759618e526a
 	github.com/brotherlogic/goserver v0.0.0-20230113190359-3aaa706170c9
 	github.com/brotherlogic/recordcleaner v0.0.0-20230114021544-fe7d7c9cef38
