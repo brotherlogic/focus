@@ -28,9 +28,10 @@ type Server struct {
 func Init() *Server {
 	s := &Server{
 		GoServer: &goserver.GoServer{},
-		foci:     []FocusBuilder{},
 	}
 	s.cleanerClient = &recordcleaner_client.RecordCleanerClient{Gs: s.GoServer}
+
+	s.foci = []FocusBuilder{s.getRecordCleaningFocus}
 	return s
 }
 
