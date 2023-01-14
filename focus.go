@@ -36,7 +36,7 @@ func Init() *Server {
 
 // DoRegister does RPC registration
 func (s *Server) DoRegister(server *grpc.Server) {
-
+	pb.RegisterFocusServiceServer(server, s)
 }
 
 // ReportHealth alerts if we're not healthy
