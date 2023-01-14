@@ -6,6 +6,7 @@ require (
 	github.com/brotherlogic/dstore v0.0.0-20230108103035-94e9284d0601
 	github.com/brotherlogic/githubcard v0.0.0-20230113194243-eec83da81d1a
 	github.com/brotherlogic/goserver v0.0.0-20230113190359-3aaa706170c9
+	github.com/brotherlogic/recordcleaner v0.0.0-20230114021544-fe7d7c9cef38
 	github.com/brotherlogic/tasklist v0.0.0-20230113212529-fa516013affb
 	github.com/prometheus/client_golang v1.14.0
 	golang.org/x/net v0.5.0
@@ -42,5 +43,5 @@ require (
 	go.opentelemetry.io/otel/trace v1.11.2 // indirect
 	golang.org/x/sys v0.4.0 // indirect
 	golang.org/x/text v0.6.0 // indirect
-	google.golang.org/genproto v0.0.0-20230106154932-a12b697841d9 // indirect
+	google.golang.org/genproto v0.0.0-20230113154510-dbe35b8444a5 // indirect
 )

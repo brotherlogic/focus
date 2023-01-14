@@ -9,6 +9,10 @@ import (
 
 	pb "github.com/brotherlogic/focus/proto"
 	pbg "github.com/brotherlogic/goserver/proto"
+
+	recordcollection_client "github/brotherlogic/recordcollection/cliet"
+
+	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
 )
 
 type FocusBuilder = func(context.Context) (*pb.Focus, error)
@@ -16,7 +20,9 @@ type FocusBuilder = func(context.Context) (*pb.Focus, error)
 // Server main server type
 type Server struct {
 	*goserver.GoServer
-	foci []FocusBuilder
+	foci          []FocusBuilder
+	cleanerClient *recordcleaner_client.RecordCleanerClient
+	rccClient     *recordcollection_client.RecordCollectionClient
 }
 
 // Init builds the server
@@ -25,6 +31,7 @@ func Init() *Server {
 		GoServer: &goserver.GoServer{},
 		foci:     []FocusBuilder{},
 	}
+	s.cleanerClient = &recordcleaner_client.RecordCleanerClient{Gs: s.GoServer}
 	return s
 }
 
