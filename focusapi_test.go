@@ -4,11 +4,15 @@ import (
 	"context"
 	"testing"
 
-	pb "github.com/brotherlogic/focus/proto"
-	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
-	recordcollection_client "github.com/brotherlogic/recordcollection/client"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+
+	pb "github.com/brotherlogic/focus/proto"
+	pbgd "github.com/brotherlogic/godiscogs"
+	pbrc "github.com/brotherlogic/recordcollection/proto"
+
+	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
+	recordcollection_client "github.com/brotherlogic/recordcollection/client"
 )
 
 func InitTestServer() *Server {
@@ -21,6 +25,7 @@ func InitTestServer() *Server {
 func TestGetRecordCleanerFocusSucceeds(t *testing.T) {
 	s := InitTestServer()
 	s.foci = []FocusBuilder{s.getRecordCleaningFocus}
+	s.rccClient.AddRecord(&pbrc.Record{Release: &pbgd.Release{InstanceId: 1234, Images: []*pbgd.Image{&pbgd.Image{Uri: "blah"}}}})
 
 	res, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
 	if err != nil {
@@ -29,6 +34,10 @@ func TestGetRecordCleanerFocusSucceeds(t *testing.T) {
 
 	if res.GetFocus().GetType() != pb.Focus_FOCUS_ON_RECORD_CLEANING {
 		t.Errorf("Bad focus: %v", res)
+	}
+
+	if len(res.Focus.GetLink()) == 0 {
+		t.Errorf("No link: %v", res)
 	}
 }
 
