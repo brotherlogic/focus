@@ -9,6 +9,7 @@ import (
 	pb "github.com/brotherlogic/focus/proto"
 	pbgh "github.com/brotherlogic/githubcard/proto"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/anypb"
 )
@@ -39,8 +40,8 @@ func TestGetHomeTasksFailOnIssuePull(t *testing.T) {
 	s.ghClient.ErrorCode = codes.DataLoss
 
 	_, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
-	if err == nil {
-		t.Fatalf("Bad focus pull for home tasks: %v", err)
+	if err == nil || status.Code(err) != codes.OutOfRange {
+		t.Fatalf("Bad focus pull for home tasks - should be dataloss: %v", err)
 	}
 }
 
