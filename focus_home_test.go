@@ -50,20 +50,21 @@ func TestGetHomeTasksFailOnNoIssues(t *testing.T) {
 
 	_, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
 	if err == nil {
-		t.Fatalf("Bad focus pull for home tasks: %v", err)
+		t.Fatalf("Bad focus pull for home tasks (expected no issues): %v", err)
 	}
 }
 
 func TestGetHomeTasksFailOnHomeTasksDone(t *testing.T) {
 	s := InitTestServer()
 	s.foci = []FocusBuilder{s.getHomeTaskFocus}
-	s.ghClient.ErrorCode = codes.DataLoss
 	config := &pb.Config{HomeCount: 2}
 	data, _ := proto.Marshal(config)
 	s.dsClient.Write(context.Background(), &pbds.WriteRequest{Key: CONFIG, Value: &anypb.Any{Value: data}})
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "Test", Service: "home", DateAdded: time.Now().Unix()})
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "Test2", Service: "home", DateAdded: time.Now().Add(time.Hour).Unix()})
 
 	_, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
 	if err == nil {
-		t.Fatalf("Bad focus pull for home tasks: %v", err)
+		t.Fatalf("Bad focus pull for home tasks (expected tasks dones): %v", err)
 	}
 }
