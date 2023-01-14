@@ -10,9 +10,8 @@ import (
 	pb "github.com/brotherlogic/focus/proto"
 	pbg "github.com/brotherlogic/goserver/proto"
 
-	recordcollection_client "github/brotherlogic/recordcollection/cliet"
-
 	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
+	recordcollection_client "github.com/brotherlogic/recordcollection/client"
 )
 
 type FocusBuilder = func(context.Context) (*pb.Focus, error)
