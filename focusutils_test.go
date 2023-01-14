@@ -26,3 +26,14 @@ func TestBadLoad(t *testing.T) {
 		t.Errorf("Should not have failed: %v, %v", config, err)
 	}
 }
+
+func TestBadLoadActual(t *testing.T) {
+	s := InitTestServer()
+	s.dsClient.ErrorCode = make(map[string]codes.Code)
+	s.dsClient.ErrorCode[CONFIG] = codes.DataLoss
+
+	config, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
+	if err == nil {
+		t.Errorf("Should not have failed: %v, %v", config, err)
+	}
+}
