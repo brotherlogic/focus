@@ -1,9 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"sort"
-
 	pb "github.com/brotherlogic/focus/proto"
 	"golang.org/x/net/context"
 	"google.golang.org/protobuf/proto"
@@ -38,7 +35,7 @@ func (s *Server) load(ctx context.Context) (*pb.Config, error) {
 	return config, err
 }
 
-func (s *Server) getRecordCleaningFocus(ctx context.Context) (*pb.Focus, error) {
+func (s *Server) getRecordCleaningFocus(ctx context.Context, _ *pb.Config) (*pb.Focus, error) {
 	toclean, err := s.cleanerClient.GetClean(ctx, &pbrcl.GetCleanRequest{})
 	if err != nil {
 		return nil, err
@@ -53,30 +50,5 @@ func (s *Server) getRecordCleaningFocus(ctx context.Context) (*pb.Focus, error) 
 		Type:   pb.Focus_FOCUS_ON_RECORD_CLEANING,
 		Detail: record.GetRecord().GetRelease().GetTitle(),
 		Link:   getImage(record.GetRecord().GetRelease().GetImages()),
-	}, nil
-}
-
-func (s *Server) getHomeTaskFocus(ctx context.Context) (*pb.Focus, error) {
-	config, err := s.load(ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	if config.HomeCount > 2 {
-		return nil, fmt.Errorf("Done enough stuff in the home today")
-	}
-
-	issues, err = s.ghClient.GetIssues(ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	sort.SliceStable(issues.Issues, func(i, j int) bool {
-		return issues.GetIssues()[i].DateAdded < issues.GetIssues()[j].DateAdded
-	})
-
-	return &pb.Focus{
-		Type:    pb.Focus_FOCUS_ON_HOME_TASKS,
-		Details: issues.GetIssues()[0].Title,
 	}, nil
 }

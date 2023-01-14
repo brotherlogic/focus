@@ -16,7 +16,7 @@ import (
 	recordcollection_client "github.com/brotherlogic/recordcollection/client"
 )
 
-type FocusBuilder = func(context.Context) (*pb.Focus, error)
+type FocusBuilder = func(context.Context, *pb.Config) (*pb.Focus, error)
 
 // Server main server type
 type Server struct {

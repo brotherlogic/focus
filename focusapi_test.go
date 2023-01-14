@@ -7,7 +7,9 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
+	dstore_client "github.com/brotherlogic/dstore/client"
 	pb "github.com/brotherlogic/focus/proto"
+	github_client "github.com/brotherlogic/githubcard/client"
 	pbgd "github.com/brotherlogic/godiscogs"
 	pbrc "github.com/brotherlogic/recordcollection/proto"
 
@@ -19,6 +21,8 @@ func InitTestServer() *Server {
 	s := Init()
 	s.cleanerClient = &recordcleaner_client.RecordCleanerClient{Test: true}
 	s.rccClient = &recordcollection_client.RecordCollectionClient{Test: true}
+	s.ghClient = &github_client.GHClient{Test: true}
+	s.dsClient = &dstore_client.DStoreClient{Test: true}
 	return s
 }
 
