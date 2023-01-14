@@ -29,7 +29,7 @@ func (s *Server) GetFocus(ctx context.Context, req *pb.GetFocusRequest) (*pb.Get
 		}
 	}
 
-	log.Printf("Reached here")
+	log.Printf("reached here")
 
 	return nil, status.Errorf(codes.OutOfRange, "No focus found")
 }
