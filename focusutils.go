@@ -3,10 +3,16 @@ package main
 import (
 	pb "github.com/brotherlogic/focus/proto"
 	"golang.org/x/net/context"
+	"google.golang.org/protobuf/proto"
 
+	pbds "github.com/brotherlogic/dstore/proto"
 	pbgd "github.com/brotherlogic/godiscogs"
 	pbrcl "github.com/brotherlogic/recordcleaner/proto"
 	pbrc "github.com/brotherlogic/recordcollection/proto"
+)
+
+var (
+	CONFIG = "github.com/brotherlogic/focus/config"
 )
 
 func getImage(images []*pbgd.Image) string {
@@ -17,7 +23,19 @@ func getImage(images []*pbgd.Image) string {
 	return ""
 }
 
-func (s *Server) getRecordCleaningFocus(ctx context.Context) (*pb.Focus, error) {
+func (s *Server) load(ctx context.Context) (*pb.Config, error) {
+	data, err := s.dsClient.Read(ctx, &pbds.ReadRequest{Key: CONFIG})
+	if err != nil {
+		return nil, err
+	}
+
+	config := &pb.Config{}
+	proto.Unmarshal(data.GetValue().GetValue(), config)
+
+	return config, err
+}
+
+func (s *Server) getRecordCleaningFocus(ctx context.Context, _ *pb.Config) (*pb.Focus, error) {
 	toclean, err := s.cleanerClient.GetClean(ctx, &pbrcl.GetCleanRequest{})
 	if err != nil {
 		return nil, err
