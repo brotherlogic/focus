@@ -30,6 +30,7 @@ func (s *Server) getHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb.F
 			return &pb.Focus{
 				Type:   pb.Focus_FOCUS_ON_HOME_TASKS,
 				Detail: issue.GetTitle(),
+				Link:   fmt.Sprintf("https://github.com/brotherlogic/home/issues/%v", issue.GetNumber()),
 			}, nil
 		}
 	}
