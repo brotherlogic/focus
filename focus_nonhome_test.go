@@ -22,7 +22,7 @@ func TestGetNonHomeTasksSucceed(t *testing.T) {
 		t.Fatalf("Bad focus pull for non home tasks: %v", err)
 	}
 
-	if res.GetFocus().GetType() != pb.Focus_FOCUS_ON_HOME_TASKS {
+	if res.GetFocus().GetType() != pb.Focus_FOCUS_ON_NON_HOME_TASKS {
 		t.Errorf("Bad focus: %v", res)
 	}
 
