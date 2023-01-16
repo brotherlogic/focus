@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/brotherlogic/goserver"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
 	pb "github.com/brotherlogic/focus/proto"
-	pbgh "github.com/brotherlogic/githubcard/proto"
 	pbg "github.com/brotherlogic/goserver/proto"
 
 	dstore_client "github.com/brotherlogic/dstore/client"
@@ -39,14 +39,17 @@ func Init() *Server {
 	s.ghClient = &github_client.GHClient{Gs: s.GoServer}
 	s.dsClient = &dstore_client.DStoreClient{Gs: s.GoServer}
 
-	s.foci = []FocusBuilder{s.getHomeTaskFocus} //s.getRecordCleaningFocus,
+	if time.Now().After(time.Date(2022, time.January, 23, 17, 30, 0, 0, time.Now().Location())) {
+		s.foci = []FocusBuilder{s.getRecordCleaningFocus, s.getHomeTaskFocus}
+	} else {
+		s.foci = []FocusBuilder{s.getHomeTaskFocus}
+	}
 	return s
 }
 
 // DoRegister does RPC registration
 func (s *Server) DoRegister(server *grpc.Server) {
 	pb.RegisterFocusServiceServer(server, s)
-	pbgh.RegisterGithubSubscriberServer(server, s)
 }
 
 // ReportHealth alerts if we're not healthy
