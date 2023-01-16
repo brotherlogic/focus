@@ -44,7 +44,7 @@ func Init(test bool) *Server {
 	if test || time.Now().After(time.Date(2023, time.January, 23, 17, 30, 0, 0, time.Now().Location())) {
 		s.foci = []FocusBuilder{s.getRecordCleaningFocus, s.getHomeTaskFocus, s.getNoHomeTaskFocus}
 	} else {
-		s.foci = []FocusBuilder{s.getHomeTaskFocus}
+		s.foci = []FocusBuilder{s.getHomeTaskFocus, s.getNoHomeTaskFocus}
 	}
 	return s
 }
