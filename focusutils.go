@@ -1,7 +1,10 @@
 package main
 
 import (
+	"time"
+
 	pb "github.com/brotherlogic/focus/proto"
+	"github.com/prometheus/client_golang/prometheus"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -26,6 +29,12 @@ func getImage(images []*pbgd.Image) string {
 	return ""
 }
 
+func (s *Server) save(ctx context.Context, config *pb.Config) error {
+	data, _ := proto.Marshal(config)
+	_, err := s.dsClient.Write(ctx, &pbds.WriteRequest{Key: CONFIG, Value: &anypb.Any{Value: data}})
+	return err
+}
+
 func (s *Server) load(ctx context.Context) (*pb.Config, error) {
 	data, err := s.dsClient.Read(ctx, &pbds.ReadRequest{Key: CONFIG})
 	if err != nil {
@@ -38,6 +47,16 @@ func (s *Server) load(ctx context.Context) (*pb.Config, error) {
 
 	config := &pb.Config{}
 	proto.Unmarshal(data.GetValue().GetValue(), config)
+
+	datestr := time.Now().Format("01/02/06")
+	if config.GetDate() != datestr || config.GetIssueCount() == nil {
+		config.Date = datestr
+		config.IssueCount = make(map[string]int32)
+	}
+
+	for key, val := range config.IssueCount {
+		issueCount.With(prometheus.Labels{"service": key}).Set(float64(val))
+	}
 
 	return config, nil
 }
