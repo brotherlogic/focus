@@ -24,12 +24,12 @@ func (s *Server) getNoHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb
 	for _, issue := range resp.GetIssues() {
 		if issue.GetService() != "home" {
 			return &pb.Focus{
-				Type:   pb.Focus_FOCUS_ON_HOME_TASKS,
+				Type:   pb.Focus_FOCUS_ON_NON_HOME_TASKS,
 				Detail: issue.GetTitle(),
-				Link:   fmt.Sprintf("https://github.com/brotherlogic/home/issues/%v", issue.GetNumber()),
+				Link:   fmt.Sprintf("https://github.com/brotherlogic/%v/issues/%v", issue.GetService(), issue.GetNumber()),
 			}, nil
 		}
 	}
 
-	return nil, fmt.Errorf("no home issues are remaining")
+	return nil, fmt.Errorf("no non-home issues are remaining")
 }
