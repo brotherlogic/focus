@@ -27,10 +27,11 @@ type Server struct {
 	rccClient     *recordcollection_client.RecordCollectionClient
 	ghClient      *github_client.GHClient
 	dsClient      *dstore_client.DStoreClient
+	test          bool
 }
 
 // Init builds the server
-func Init() *Server {
+func Init(test bool) *Server {
 	s := &Server{
 		GoServer: &goserver.GoServer{},
 	}
@@ -39,7 +40,7 @@ func Init() *Server {
 	s.ghClient = &github_client.GHClient{Gs: s.GoServer}
 	s.dsClient = &dstore_client.DStoreClient{Gs: s.GoServer}
 
-	if time.Now().After(time.Date(2022, time.January, 23, 17, 30, 0, 0, time.Now().Location())) {
+	if test || time.Now().After(time.Date(2023, time.January, 23, 17, 30, 0, 0, time.Now().Location())) {
 		s.foci = []FocusBuilder{s.getRecordCleaningFocus, s.getHomeTaskFocus}
 	} else {
 		s.foci = []FocusBuilder{s.getHomeTaskFocus}
@@ -73,7 +74,7 @@ func (s *Server) GetState() []*pbg.State {
 }
 
 func main() {
-	server := Init()
+	server := Init(false)
 	server.PrepServer("focus")
 	server.Register = server
 

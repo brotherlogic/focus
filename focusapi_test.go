@@ -18,7 +18,8 @@ import (
 )
 
 func InitTestServer() *Server {
-	s := Init()
+	s := Init(true)
+	s.test = true
 	s.cleanerClient = &recordcleaner_client.RecordCleanerClient{Test: true}
 	s.rccClient = &recordcollection_client.RecordCollectionClient{Test: true}
 	s.ghClient = &github_client.GHClient{Test: true}
