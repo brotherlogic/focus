@@ -9,6 +9,7 @@ import (
 	"google.golang.org/grpc"
 
 	pb "github.com/brotherlogic/focus/proto"
+	pbgh "github.com/brotherlogic/githubcard/proto"
 	pbg "github.com/brotherlogic/goserver/proto"
 
 	dstore_client "github.com/brotherlogic/dstore/client"
@@ -51,6 +52,7 @@ func Init(test bool) *Server {
 // DoRegister does RPC registration
 func (s *Server) DoRegister(server *grpc.Server) {
 	pb.RegisterFocusServiceServer(server, s)
+	pbgh.RegisterGithubSubscriberServer(server, s)
 }
 
 // ReportHealth alerts if we're not healthy
