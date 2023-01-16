@@ -6,7 +6,7 @@ option go_package = "github.com/brotherlogic/focus/proto";
 
 message Config {
     string date = 1;
-    int32 home_count = 2;
+    map<string, int32> issue_count = 2;
 }
 
 message Focus {

@@ -58,7 +58,7 @@ func TestGetHomeTasksFailOnNoIssues(t *testing.T) {
 func TestGetHomeTasksFailOnHomeTasksDone(t *testing.T) {
 	s := InitTestServer()
 	s.foci = []FocusBuilder{s.getHomeTaskFocus}
-	config := &pb.Config{HomeCount: 2}
+	config := &pb.Config{IssueCount: map[string]int32{"home": 2}}
 	data, _ := proto.Marshal(config)
 	s.dsClient.Write(context.Background(), &pbds.WriteRequest{Key: CONFIG, Value: &anypb.Any{Value: data}})
 	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "Test", Service: "home", DateAdded: time.Now().Unix()})

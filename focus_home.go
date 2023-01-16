@@ -12,7 +12,7 @@ import (
 
 func (s *Server) getHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
 
-	if config.HomeCount >= 2 {
+	if config.IssueCount["home"] >= 2 {
 		return nil, fmt.Errorf("done enough stuff in the home today")
 	}
 
