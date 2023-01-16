@@ -14,6 +14,7 @@ message Focus {
         UNKNOWN = 0;
         FOCUS_ON_RECORD_CLEANING = 1;
         FOCUS_ON_HOME_TASKS = 2;
+        FOCUS_ON_NON_HOME_TASKS = 3;
     }
 
     FocusType type = 1;
