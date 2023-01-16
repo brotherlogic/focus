@@ -5,8 +5,10 @@ import (
 	"testing"
 
 	pb "github.com/brotherlogic/focus/proto"
+	pbgh "github.com/brotherlogic/githubcard/proto"
 	"github.com/brotherlogic/godiscogs"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func TestEmptyImages(t *testing.T) {
@@ -35,5 +37,24 @@ func TestBadLoadActual(t *testing.T) {
 	config, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
 	if err == nil {
 		t.Errorf("Should not have failed: %v, %v", config, err)
+	}
+}
+
+func TestUpdateSuccess(t *testing.T) {
+	s := InitTestServer()
+
+	_, err := s.ChangeUpdate(context.Background(), &pbgh.ChangeUpdateRequest{Issue: &pbgh.Issue{Service: "home"}})
+	if err != nil {
+		t.Errorf("This should succeed: %v", err)
+	}
+}
+
+func TestUpdateFailOnLoad(t *testing.T) {
+	s := InitTestServer()
+	s.dsClient.ErrorCode = map[string]codes.Code{CONFIG: codes.DataLoss}
+
+	_, err := s.ChangeUpdate(context.Background(), &pbgh.ChangeUpdateRequest{Issue: &pbgh.Issue{Service: "home"}})
+	if status.Code(err) != codes.DataLoss {
+		t.Errorf("Should have failed with data loss: %v", err)
 	}
 }
