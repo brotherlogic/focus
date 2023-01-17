@@ -52,6 +52,11 @@ func (s *Server) load(ctx context.Context) (*pb.Config, error) {
 	if config.GetDate() != datestr || config.GetIssueCount() == nil {
 		config.Date = datestr
 		config.IssueCount = make(map[string]int32)
+		config.IssuesSeen = make(map[string]bool)
+	}
+
+	if config.IssuesSeen == nil {
+		config.IssuesSeen = make(map[string]bool)
 	}
 
 	for key, val := range config.IssueCount {

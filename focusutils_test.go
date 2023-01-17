@@ -49,6 +49,25 @@ func TestUpdateSuccess(t *testing.T) {
 	}
 }
 
+func TestUpdateDouble(t *testing.T) {
+	s := InitTestServer()
+
+	_, err := s.ChangeUpdate(context.Background(), &pbgh.ChangeUpdateRequest{Issue: &pbgh.Issue{Title: "Hello", Service: "home", Number: 123}})
+	if err != nil {
+		t.Errorf("This should succeed: %v", err)
+	}
+
+	_, err = s.ChangeUpdate(context.Background(), &pbgh.ChangeUpdateRequest{Issue: &pbgh.Issue{Title: "Hello", Service: "home", Number: 123}})
+	if err == nil {
+		t.Errorf("This should fail as we've already seen it: %v", err)
+	}
+
+	_, err = s.ChangeUpdate(context.Background(), &pbgh.ChangeUpdateRequest{Issue: &pbgh.Issue{Title: "Hello", Service: "home", Number: 124}})
+	if err != nil {
+		t.Errorf("This should fail as we've already seen it: %v", err)
+	}
+}
+
 func TestUpdateFailOnLoad(t *testing.T) {
 	s := InitTestServer()
 	s.dsClient.ErrorCode = map[string]codes.Code{CONFIG: codes.DataLoss}
