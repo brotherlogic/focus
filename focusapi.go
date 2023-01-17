@@ -46,6 +46,12 @@ func (s *Server) ChangeUpdate(ctx context.Context, req *pbgh.ChangeUpdateRequest
 		return nil, err
 	}
 
+	rep := fmt.Sprintf("%v-%v", req.GetIssue().GetService(), req.GetIssue().GetNumber())
+	if config.IssuesSeen[rep] {
+		return nil, status.Errorf(codes.AlreadyExists, "We've already seen %v", req.GetIssue())
+	}
+
+	config.IssuesSeen[rep] = true
 	config.IssueCount[req.GetIssue().GetService()]++
 
 	return nil, s.save(ctx, config)
