@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/brotherlogic/goserver"
 	"golang.org/x/net/context"
@@ -41,11 +40,8 @@ func Init(test bool) *Server {
 	s.ghClient = &github_client.GHClient{Gs: s.GoServer}
 	s.dsClient = &dstore_client.DStoreClient{Gs: s.GoServer}
 
-	if test || time.Now().After(time.Date(2023, time.January, 23, 17, 30, 0, 0, time.Now().Location())) {
-		s.foci = []FocusBuilder{s.getRecordCleaningFocus, s.getHomeTaskFocus, s.getNoHomeTaskFocus}
-	} else {
-		s.foci = []FocusBuilder{s.getHomeTaskFocus, s.getNoHomeTaskFocus}
-	}
+	s.foci = []FocusBuilder{s.getRecordCleaningFocus, s.getHomeTaskFocus, s.getNoHomeTaskFocus, s.getHomeTaskFocus}
+
 	return s
 }
 
