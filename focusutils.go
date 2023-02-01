@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	pb "github.com/brotherlogic/focus/proto"
@@ -79,7 +80,7 @@ func (s *Server) getRecordCleaningFocus(ctx context.Context, _ *pb.Config) (*pb.
 
 	return &pb.Focus{
 		Type:   pb.Focus_FOCUS_ON_RECORD_CLEANING,
-		Detail: record.GetRecord().GetRelease().GetTitle(),
+		Detail: fmt.Sprintf("%v [%v]", record.GetRecord().GetRelease().GetTitle(), record.GetRecord().GetRelease().GetInstanceId()),
 		Link:   getImage(record.GetRecord().GetRelease().GetImages()),
 	}, nil
 }
