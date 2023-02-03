@@ -13,7 +13,7 @@ import (
 	"google.golang.org/protobuf/types/known/anypb"
 
 	pbds "github.com/brotherlogic/dstore/proto"
-	pbgd "github.com/brotherlogic/godiscogs"
+	pbgd "github.com/brotherlogic/godiscogs/proto"
 	pbrcl "github.com/brotherlogic/recordcleaner/proto"
 	pbrc "github.com/brotherlogic/recordcollection/proto"
 )
