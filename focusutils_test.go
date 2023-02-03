@@ -6,13 +6,13 @@ import (
 
 	pb "github.com/brotherlogic/focus/proto"
 	pbgh "github.com/brotherlogic/githubcard/proto"
-	"github.com/brotherlogic/godiscogs"
+	pbgd "github.com/brotherlogic/godiscogs/proto"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 func TestEmptyImages(t *testing.T) {
-	res := getImage([]*godiscogs.Image{})
+	res := getImage([]*pbgd.Image{})
 	if res != "" {
 		t.Errorf("Should have been blank: %v", res)
 	}

@@ -10,7 +10,7 @@ import (
 	dstore_client "github.com/brotherlogic/dstore/client"
 	pb "github.com/brotherlogic/focus/proto"
 	github_client "github.com/brotherlogic/githubcard/client"
-	pbgd "github.com/brotherlogic/godiscogs"
+	pbgd "github.com/brotherlogic/godiscogs/proto"
 	pbrc "github.com/brotherlogic/recordcollection/proto"
 
 	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
