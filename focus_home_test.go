@@ -30,7 +30,7 @@ func TestGetHomeTasksSucceed(t *testing.T) {
 	}
 
 	if res.GetFocus().GetDetail() != "Test" {
-		t.Errorf("Bad ordering on home tasks")
+		t.Errorf("Bad ordering on home tasks: %v", res)
 	}
 }
 
