@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	pb "github.com/brotherlogic/focus/proto"
@@ -13,6 +14,7 @@ import (
 	"google.golang.org/protobuf/types/known/anypb"
 
 	pbds "github.com/brotherlogic/dstore/proto"
+	pbgh "github.com/brotherlogic/githubcard/proto"
 	pbgd "github.com/brotherlogic/godiscogs/proto"
 	pbrcl "github.com/brotherlogic/recordcleaner/proto"
 	pbrc "github.com/brotherlogic/recordcollection/proto"
@@ -28,6 +30,27 @@ func getImage(images []*pbgd.Image) string {
 	}
 
 	return ""
+}
+
+func (s *Server) trimIssues(resp *pbgh.GetAllResponse) {
+	var ni []*pbgh.Issue
+	for _, issue := range resp.GetIssues() {
+		elems := strings.Fields(issue.GetTitle())
+		found := false
+		legit := false
+		for _, elem := range elems {
+			tr, err := time.Parse("2006-01-02", elem)
+			if err == nil {
+				found = true
+				legit = !time.Now().Before(tr)
+			}
+		}
+
+		if !found || legit {
+			ni = append(ni, issue)
+		}
+	}
+	resp.Issues = ni
 }
 
 func (s *Server) save(ctx context.Context, config *pb.Config) error {
