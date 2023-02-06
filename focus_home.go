@@ -18,6 +18,8 @@ func (s *Server) getHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb.F
 		return nil, err
 	}
 
+	s.trimIssues(resp)
+
 	sort.SliceStable(resp.Issues, func(i, j int) bool {
 		return resp.GetIssues()[i].DateAdded < resp.GetIssues()[j].DateAdded
 	})

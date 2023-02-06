@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"testing"
 	"time"
 
@@ -30,7 +31,7 @@ func TestGetHomeTasksSucceed(t *testing.T) {
 	}
 
 	if res.GetFocus().GetDetail() != "Test" {
-		t.Errorf("Bad ordering on home tasks")
+		t.Errorf("Bad ordering on home tasks: %v", res)
 	}
 }
 
@@ -51,6 +52,26 @@ func TestGetHomeTasksP1Succeed(t *testing.T) {
 
 	if res.GetFocus().GetDetail() == "Test" {
 		t.Errorf("Bad ordering on home tasks")
+	}
+}
+
+func TestGetHomeTasksDateSucceed(t *testing.T) {
+	s := InitTestServer()
+	s.foci = []FocusBuilder{s.getHomeTaskFocus}
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: fmt.Sprintf("Test %v", time.Now().Add(time.Hour*24).Format("2006-01-02")), Service: "home", DateAdded: time.Now().Unix()})
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "Test2", Service: "home", DateAdded: time.Now().Add(time.Hour).Unix()})
+
+	res, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
+	if err != nil {
+		t.Fatalf("Bad focus pull for home tasks: %v", err)
+	}
+
+	if res.GetFocus().GetType() != pb.Focus_FOCUS_ON_HOME_TASKS {
+		t.Errorf("Bad focus: %v", res)
+	}
+
+	if res.GetFocus().GetDetail() != "Test2" {
+		t.Errorf("Bad ordering on home tasks with date: %v", res)
 	}
 }
 
