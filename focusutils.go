@@ -32,14 +32,15 @@ func getImage(images []*pbgd.Image) string {
 	return ""
 }
 
-func (s *Server) trimIssues(resp *pbgh.GetAllResponse) {
+func (s *Server) trimIssues(ctx context.Context, resp *pbgh.GetAllResponse) {
 	var ni []*pbgh.Issue
 	for _, issue := range resp.GetIssues() {
 		elems := strings.Fields(issue.GetTitle())
 		found := false
 		legit := false
 		for _, elem := range elems {
-			tr, err := time.Parse("2006-01-02", elem)
+			tr, err := time.ParseInLocation("2006-01-02", elem, time.Now().Location())
+
 			if err == nil {
 				found = true
 				legit = !time.Now().Before(tr)
