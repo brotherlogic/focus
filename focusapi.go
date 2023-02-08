@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/codes"
@@ -52,7 +53,9 @@ func (s *Server) ChangeUpdate(ctx context.Context, req *pbgh.ChangeUpdateRequest
 	}
 
 	config.IssuesSeen[rep] = true
-	config.IssueCount[req.GetIssue().GetService()]++
+	if !strings.Contains(req.GetIssue().GetTitle(), "P1") {
+		config.IssueCount[req.GetIssue().GetService()]++
+	}
 
 	return nil, s.save(ctx, config)
 }
