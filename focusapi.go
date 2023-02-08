@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"strings"
 
 	"golang.org/x/net/context"
@@ -57,7 +56,6 @@ func (s *Server) ChangeUpdate(ctx context.Context, req *pbgh.ChangeUpdateRequest
 	if !strings.Contains(req.GetIssue().GetTitle(), "P1") {
 		config.IssueCount[req.GetIssue().GetService()]++
 	}
-	log.Printf("CLOSED WITH %v - %v", config.IssueCount, req)
 
 	return nil, s.save(ctx, config)
 }
