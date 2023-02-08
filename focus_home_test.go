@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"strings"
 	"testing"
 	"time"
 
@@ -72,6 +73,36 @@ func TestGetHomeTasksDateSucceed(t *testing.T) {
 
 	if res.GetFocus().GetDetail() != "Test2" {
 		t.Errorf("Bad ordering on home tasks with date: %v", res)
+	}
+}
+
+func TestP1sDontCount(t *testing.T) {
+	s := InitTestServer()
+	s.foci = []FocusBuilder{s.getHomeTaskFocus}
+
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "P1: Test1", Service: "home", DateAdded: time.Now().Add(time.Hour).Unix()})
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "Test2", Service: "home", DateAdded: time.Now().Add(time.Hour * 2).Unix()})
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "Test3", Service: "home", DateAdded: time.Now().Add(time.Hour * 3).Unix()})
+	s.ghClient.AddIssue(context.Background(), &pbgh.Issue{Title: "Test4", Service: "home", DateAdded: time.Now().Add(time.Hour * 4).Unix()})
+
+	for i := 1; i <= 4; i++ {
+		res, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
+		if err != nil {
+			t.Fatalf("Unable to complete test: %v", err)
+		}
+		if !strings.Contains(res.Focus.GetDetail(), fmt.Sprintf("Test%v", i)) {
+			t.Fatalf("Bad test pull: %v (%v)", res, fmt.Sprintf("Test%v", i))
+		}
+
+		iss := &pbgh.Issue{Service: "home", Number: int32(i), Title: fmt.Sprintf("Test%v", i)}
+		if i == 1 {
+			iss.Title = fmt.Sprintf("P1: Test1")
+		}
+		_, err = s.ChangeUpdate(context.Background(), &pbgh.ChangeUpdateRequest{Issue: iss})
+		if err != nil {
+			t.Fatalf("Unable to register change: %v", err)
+		}
+		s.ghClient.DeleteIssue(context.Background(), &pbgh.DeleteRequest{Issue: iss})
 	}
 }
 
