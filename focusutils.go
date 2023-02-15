@@ -94,18 +94,17 @@ func (s *Server) load(ctx context.Context) (*pb.Config, error) {
 func (s *Server) getRecordCleaningFocus(ctx context.Context, _ *pb.Config) (*pb.Focus, error) {
 	toclean, err := s.cleanerClient.GetClean(ctx, &pbrcl.GetCleanRequest{OnlyEssential: true})
 	if err != nil {
-		return nil, err
-	}
-
-	record, err := s.rccClient.GetRecord(ctx, &pbrc.GetRecordRequest{InstanceId: toclean.GetInstanceId()})
-	if err != nil {
 		if status.Code(err) == codes.FailedPrecondition {
 			return &pb.Focus{
 				Type:   pb.Focus_FOCUS_ON_RECORD_CLEANING,
 				Detail: fmt.Sprintf("%v", err),
 			}, nil
 		}
+		return nil, err
+	}
 
+	record, err := s.rccClient.GetRecord(ctx, &pbrc.GetRecordRequest{InstanceId: toclean.GetInstanceId()})
+	if err != nil {
 		return nil, err
 	}
 

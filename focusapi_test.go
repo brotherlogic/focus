@@ -57,6 +57,17 @@ func TestGeRecordCleanerFocusFailsOnClean(t *testing.T) {
 	}
 }
 
+func TestGetRecordCleanerFocusWater(t *testing.T) {
+	s := InitTestServer()
+	s.foci = []FocusBuilder{s.getRecordCleaningFocus}
+	s.cleanerClient.ErrorCode = codes.FailedPrecondition
+
+	r, err := s.GetFocus(context.Background(), &pb.GetFocusRequest{})
+	if status.Code(err) != codes.OK {
+		t.Errorf("Expected this to fail on call to record cleaner: %v -> %v", err, r)
+	}
+}
+
 func TestGeRecordCleanerFocusFailsOnRecord(t *testing.T) {
 	s := InitTestServer()
 	s.foci = []FocusBuilder{s.getRecordCleaningFocus}
