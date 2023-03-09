@@ -22,7 +22,7 @@ func (s *Server) getNoHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb
 	})
 
 	for _, issue := range resp.GetIssues() {
-		if issue.GetService() != "home" {
+		if issue.GetService() != "home" && issue.GetService != "recordalerting" {
 			return &pb.Focus{
 				Type:   pb.Focus_FOCUS_ON_NON_HOME_TASKS,
 				Detail: issue.GetTitle(),
