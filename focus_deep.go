@@ -30,6 +30,8 @@ func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus
 	if err != nil {
 		return nil, err
 	}
+	defer conn.Close()
+
 	client := pbtl.NewTaskListServiceClient(conn)
 	tasks, err := client.GetTasks(ctx, &pbtl.GetTasksRequest{Tags: []string{"gramophile"}})
 	if err != nil {
