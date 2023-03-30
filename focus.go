@@ -40,7 +40,12 @@ func Init(test bool) *Server {
 	s.ghClient = &github_client.GHClient{Gs: s.GoServer}
 	s.dsClient = &dstore_client.DStoreClient{Gs: s.GoServer}
 
-	s.foci = []FocusBuilder{s.getRecordCleaningFocus, s.getHomeTaskFocus, s.getNoHomeTaskFocus, s.getHomeTaskFocus}
+	s.foci = []FocusBuilder{
+		s.getDeepFocus,
+		s.getRecordCleaningFocus,
+		s.getHomeTaskFocus,
+		s.getNoHomeTaskFocus,
+		s.getHomeTaskFocus}
 
 	return s
 }
