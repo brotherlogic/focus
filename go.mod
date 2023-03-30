@@ -17,7 +17,7 @@ require (
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
-	github.com/brotherlogic/buildserver v0.0.0-20230327174347-d95462220ad9 // indirect
+	github.com/brotherlogic/buildserver v0.0.0-20230330213111-7a7af64121f3 // indirect
 	github.com/brotherlogic/datastore v0.0.0-20230118231105-ee668be05973 // indirect
 	github.com/brotherlogic/discovery v0.0.0-20230314231148-be93dd1fea01 // indirect
 	github.com/brotherlogic/gobuildslave v0.0.0-20230325231433-846bea5386e0 // indirect
@@ -42,5 +42,5 @@ require (
 	go.opentelemetry.io/otel/trace v1.14.0 // indirect
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
-	google.golang.org/genproto v0.0.0-20230330154414-c0448cd141ea // indirect
+	google.golang.org/genproto v0.0.0-20230330200707-38013875ee22 // indirect
 )
