@@ -15,6 +15,7 @@ import (
 	github_client "github.com/brotherlogic/githubcard/client"
 	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
 	recordcollection_client "github.com/brotherlogic/recordcollection/client"
+	tasklist_client "github.com/brotherlogic/tasklist/client"
 )
 
 type FocusBuilder = func(context.Context, *pb.Config) (*pb.Focus, error)
@@ -22,12 +23,13 @@ type FocusBuilder = func(context.Context, *pb.Config) (*pb.Focus, error)
 // Server main server type
 type Server struct {
 	*goserver.GoServer
-	foci          []FocusBuilder
-	cleanerClient *recordcleaner_client.RecordCleanerClient
-	rccClient     *recordcollection_client.RecordCollectionClient
-	ghClient      *github_client.GHClient
-	dsClient      *dstore_client.DStoreClient
-	test          bool
+	foci           []FocusBuilder
+	cleanerClient  *recordcleaner_client.RecordCleanerClient
+	rccClient      *recordcollection_client.RecordCollectionClient
+	ghClient       *github_client.GHClient
+	dsClient       *dstore_client.DStoreClient
+	tasklistClient *tasklist_client.TasklistClient
+	test           bool
 }
 
 // Init builds the server

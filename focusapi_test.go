@@ -12,6 +12,7 @@ import (
 	github_client "github.com/brotherlogic/githubcard/client"
 	pbgd "github.com/brotherlogic/godiscogs/proto"
 	pbrc "github.com/brotherlogic/recordcollection/proto"
+	tasklist_client "github.com/brotherlogic/tasklist/client"
 
 	recordcleaner_client "github.com/brotherlogic/recordcleaner/client"
 	recordcollection_client "github.com/brotherlogic/recordcollection/client"
@@ -24,6 +25,7 @@ func InitTestServer() *Server {
 	s.rccClient = &recordcollection_client.RecordCollectionClient{Test: true}
 	s.ghClient = &github_client.GHClient{Test: true}
 	s.dsClient = &dstore_client.DStoreClient{Test: true}
+	s.tasklistClient = &tasklist_client.TasklistClient{Test: true}
 	return s
 }
 

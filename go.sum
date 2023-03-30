@@ -2540,8 +2540,8 @@ github.com/brotherlogic/recordwants v0.0.0-20230131164454-cc6ad43cb720/go.mod h1
 github.com/brotherlogic/recordwants v0.0.0-20230210205034-4487705a3682/go.mod h1:0lu6fOU8qOTAayx32L7t5dfew8E23Jd5GkYvBt6rRno=
 github.com/brotherlogic/recordwants v0.0.0-20230217212613-164df1b64ddd/go.mod h1:3ck44THwquuRosDdNi9y6lAmbiPM+di0VvBu7kd2cnk=
 github.com/brotherlogic/recordwants v0.0.0-20230223160058-a17c8030c439/go.mod h1:3ck44THwquuRosDdNi9y6lAmbiPM+di0VvBu7kd2cnk=
-github.com/brotherlogic/tasklist v0.0.0-20230330223555-b47913921da6 h1:0YY31C6hQtltG/p2Fw39+j8R6b+R+eAfK4xgU+pEqCw=
-github.com/brotherlogic/tasklist v0.0.0-20230330223555-b47913921da6/go.mod h1:YmvxJ0uNB2JK221b7+Auu+24Rq5BWngRuyxDSV3G8q4=
+github.com/brotherlogic/tasklist v0.0.0-20230330225359-c8984ed6e28c h1:aB1FXyXybdhkzo0VVsI+szdpXtW+6ZqvJ9wHTXX+mwc=
+github.com/brotherlogic/tasklist v0.0.0-20230330225359-c8984ed6e28c/go.mod h1:YmvxJ0uNB2JK221b7+Auu+24Rq5BWngRuyxDSV3G8q4=
 github.com/brotherlogic/temp v0.0.0-20210923034957-a5d1be22449e/go.mod h1:XeQMMOzb07ycXzBCbs76Ez5oMsywgNigfanPFpHf/lU=
 github.com/brotherlogic/temp v0.0.0-20211004140433-87d556b5a0c3/go.mod h1:UNltWEmymg8cmq27siHaPt+rrsAKTyKZnV9o5dSgiMs=
 github.com/brotherlogic/temp v0.0.0-20211201183401-2f3909cacc39/go.mod h1:hIA53Gj6G+Ry4zeoI3K5YZzmlXA4xspK9UEv4i9FMKU=
