@@ -41,6 +41,7 @@ func Init(test bool) *Server {
 	s.rccClient = &recordcollection_client.RecordCollectionClient{Gs: s.GoServer}
 	s.ghClient = &github_client.GHClient{Gs: s.GoServer}
 	s.dsClient = &dstore_client.DStoreClient{Gs: s.GoServer}
+	s.tasklistClient = &tasklist_client.TasklistClient{Gs: s.GoServer}
 
 	s.foci = []FocusBuilder{
 		s.getDeepFocus,
