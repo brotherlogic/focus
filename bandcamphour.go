@@ -26,7 +26,7 @@ func (s *Server) getBandcampHour(ctx context.Context, config *pb.Config) (*pb.Fo
 	})
 
 	for _, issue := range resp.GetIssues() {
-		if issue.GetService() == "bandcamp" {
+		if issue.GetService() == "bandcampserver" {
 			return &pb.Focus{
 				Type:   pb.Focus_FOCUS_ON_NON_HOME_TASKS,
 				Detail: issue.GetTitle(),
