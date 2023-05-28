@@ -44,8 +44,9 @@ func Init(test bool) *Server {
 	s.tasklistClient = &tasklist_client.TasklistClient{Gs: s.GoServer}
 
 	s.foci = []FocusBuilder{
-		s.getDeepFocus,
 		s.getRecordCleaningFocus,
+		s.getBandcampHour,
+		s.getDeepFocus,
 		s.getHomeTaskFocus,
 		s.getNoHomeTaskFocus,
 		s.getHomeTaskFocus}
