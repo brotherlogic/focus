@@ -26,6 +26,16 @@ func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus
 		return resp.GetIssues()[i].DateAdded < resp.GetIssues()[j].DateAdded
 	})
 
+	for _, issue := range resp.Issues {
+		if issue.GetService() == "recordsorganiser" {
+			return &pb.Focus{
+				Type:   pb.Focus_FOCUS_ON_NON_HOME_TASKS,
+				Detail: issue.GetTitle(),
+				Link:   fmt.Sprintf("https://github.com/brotherlogic/%v/issues/%v", issue.GetService(), issue.GetNumber()),
+			}, nil
+		}
+	}
+
 	tasks, err := s.tasklistClient.GetTasks(ctx, &pbtl.GetTasksRequest{Tags: []string{"gramophile"}})
 	if err != nil {
 		return nil, err
