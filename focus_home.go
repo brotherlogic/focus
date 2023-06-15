@@ -35,7 +35,7 @@ func (s *Server) getHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb.F
 		}
 	}
 
-	if (config.IssueCount["home"] >= 5) || ((time.Now().Weekday() != time.Saturday && time.Now().Weekday() != time.Sunday) && config.IssueCount["home"] >= 3) {
+	if (config.IssueCount["home"] >= 10) || ((time.Now().Weekday() != time.Saturday && time.Now().Weekday() != time.Sunday) && config.IssueCount["home"] >= 10) {
 		return nil, fmt.Errorf("done enough stuff in the home today")
 	}
 
