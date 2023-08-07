@@ -13,7 +13,7 @@ import (
 )
 
 func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
-	if time.Now().Hour() != 16 && time.Now().Hour() != 17 && time.Now().Hour() != 18 && time.Now().Hour() != 19 {
+	if time.Now().Hour() == 19 {
 		return nil, fmt.Errorf("not the time for deep focus")
 	}
 
