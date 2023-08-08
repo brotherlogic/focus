@@ -12,11 +12,8 @@ import (
 )
 
 func (s *Server) getBandcampHour(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
-	// Focus on bandcamp during work hours
-	if time.Now().Weekday() != time.Saturday && time.Now().Weekday() != time.Sunday {
-		if time.Now().Hour() > 16 && time.Now().Hour() < 20 {
-			return nil, fmt.Errorf("not the time for bandcamp")
-		}
+	if time.Now().Hour() >= 16 || time.Now().Hour() < 20 || time.Now().Hour() >= 21 {
+		return nil, fmt.Errorf("not the time for bandcamp")
 	}
 
 	resp, err := s.ghClient.GetIssues(ctx, &pbgh.GetAllRequest{})
