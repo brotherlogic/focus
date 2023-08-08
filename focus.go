@@ -45,8 +45,8 @@ func Init(test bool) *Server {
 
 	s.foci = []FocusBuilder{
 		s.getRecordCleaningFocus,
-		s.getBandcampHour,
 		s.getDeepFocus,
+		s.getBandcampHour,
 		s.getHomeTaskFocus,
 		s.getNoHomeTaskFocus,
 		s.getHomeTaskFocus}

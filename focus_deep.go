@@ -13,7 +13,7 @@ import (
 )
 
 func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
-	if time.Now().Hour() < 20 && time.Now().Hour() != 16 && time.Now().Hour() != 17 {
+	if time.Now().Hour() == 19 {
 		return nil, fmt.Errorf("not the time for deep focus")
 	}
 
@@ -54,7 +54,16 @@ func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus
 					}, nil
 				}
 			}
+		}
+	}
 
+	for _, issue := range resp.GetIssues() {
+		if issue.GetService() == "gramophile" || issue.GetService() == "printqueue" {
+			return &pb.Focus{
+				Type:   pb.Focus_FOCUS_ON_NON_HOME_TASKS,
+				Detail: issue.GetTitle(),
+				Link:   fmt.Sprintf("https://github.com/brotherlogic/%v/issues/%v", issue.GetService(), issue.GetNumber()),
+			}, nil
 		}
 	}
 
