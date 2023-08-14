@@ -12,7 +12,7 @@ import (
 )
 
 func (s *Server) getBandcampHour(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
-	if time.Now().Hour() >= 16 || time.Now().Hour() < 20 || time.Now().Hour() >= 21 {
+	if time.Now().Hour() >= 16 {
 		return nil, fmt.Errorf("not the time for bandcamp")
 	}
 
