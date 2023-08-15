@@ -7,12 +7,37 @@ import (
 	"time"
 
 	"golang.org/x/net/context"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	pb "github.com/brotherlogic/focus/proto"
 	pbgh "github.com/brotherlogic/githubcard/proto"
 )
 
+type checkHome interface {
+	home(ctx context.Context) error
+}
+
+type prodCheck struct {
+	dialer func(context.Context, string, string) (*grpc.ClientConn, error)
+}
+
+func (p *prodCheck) home(ctx context.Context) error {
+	conn, err := p.dialer(ctx, "gobuildslave", "cd")
+	if err != nil {
+		return status.Errorf(codes.Unavailable, "Cannot reach home server, likely not home %v", err)
+	}
+	conn.Close()
+	return nil
+}
+
 func (s *Server) getHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
+	err := s.dialer.home(ctx)
+	if err != nil {
+		return nil, err
+	}
+
 	resp, err := s.ghClient.GetIssues(ctx, &pbgh.GetAllRequest{})
 	if err != nil {
 		return nil, err

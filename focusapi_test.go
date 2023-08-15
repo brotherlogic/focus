@@ -18,8 +18,15 @@ import (
 	recordcollection_client "github.com/brotherlogic/recordcollection/client"
 )
 
+type testCheck struct{}
+
+func (t *testCheck) home(ctx context.Context) error {
+	return nil
+}
+
 func InitTestServer() *Server {
 	s := Init(true)
+	s.dialer = &testCheck{}
 	s.test = true
 	s.cleanerClient = &recordcleaner_client.RecordCleanerClient{Test: true}
 	s.rccClient = &recordcollection_client.RecordCollectionClient{Test: true}
