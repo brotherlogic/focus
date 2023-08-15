@@ -30,6 +30,7 @@ type Server struct {
 	dsClient       *dstore_client.DStoreClient
 	tasklistClient *tasklist_client.TasklistClient
 	test           bool
+	dialer         checkHome
 }
 
 // Init builds the server
@@ -50,6 +51,8 @@ func Init(test bool) *Server {
 		s.getHomeTaskFocus,
 		s.getNoHomeTaskFocus,
 		s.getHomeTaskFocus}
+
+	s.dialer = &prodCheck{s.FDialSpecificServer}
 
 	return s
 }
