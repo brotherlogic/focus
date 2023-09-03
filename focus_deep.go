@@ -13,6 +13,10 @@ import (
 )
 
 func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
+	if time.Now().Weekday() == time.Saturday || time.Now().Weekday() == time.Sunday {
+		return nil, fmt.Errorf("not the time for deep focus")
+	}
+
 	if time.Now().Hour() == 19 || time.Now().Hour() < 16 {
 		return nil, fmt.Errorf("not the time for deep focus")
 	}
