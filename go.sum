@@ -1354,8 +1354,9 @@ github.com/brotherlogic/discovery v0.0.0-20231019043330-e664fbb1036e/go.mod h1:J
 github.com/brotherlogic/discovery v0.0.0-20231020035437-aecf5e943b36/go.mod h1:JqwKI2bAUDs0wiltOH2FX6KJtgvLkj5JsSRTQRlxodc=
 github.com/brotherlogic/discovery v0.0.0-20231020050942-159586f3e082/go.mod h1:JqwKI2bAUDs0wiltOH2FX6KJtgvLkj5JsSRTQRlxodc=
 github.com/brotherlogic/discovery v0.0.0-20231020051243-2e0cbe163232/go.mod h1:JqwKI2bAUDs0wiltOH2FX6KJtgvLkj5JsSRTQRlxodc=
-github.com/brotherlogic/discovery v0.0.0-20231020060530-be1ba24adf37 h1:lUKxW1lkXT85YMqZFqhhh7vglZ7s1brLqENuHtiHc3A=
 github.com/brotherlogic/discovery v0.0.0-20231020060530-be1ba24adf37/go.mod h1:JqwKI2bAUDs0wiltOH2FX6KJtgvLkj5JsSRTQRlxodc=
+github.com/brotherlogic/discovery v0.0.0-20231027110234-ab57292a6596 h1:rmIVFJvBahewfWcGOH2oHjM0+BtounzZIrZ36Fttsao=
+github.com/brotherlogic/discovery v0.0.0-20231027110234-ab57292a6596/go.mod h1:C0fHBy6aTKruFUm9+Tmw4QeQW/euosawwznBKtNRwoU=
 github.com/brotherlogic/dstore v0.0.0-20210705011309-803d7db560a6/go.mod h1:SJdI/5dxubp66yy6slmUfen5yCIKXFvAmMs71u9xVrk=
 github.com/brotherlogic/dstore v0.0.0-20210728181450-e87a34c62535/go.mod h1:bwiN0EPWhmDNwue1BWpCQ7DL4hLwfDwDw8JwMMgDzCs=
 github.com/brotherlogic/dstore v0.0.0-20210911232556-7a6844e1f86f/go.mod h1:Wilk+LrYLvE5+fNDXp0dYQNTMxhb6rmkwv5GwZ/K3ok=
@@ -3567,8 +3568,8 @@ github.com/brotherlogic/recordwants v0.0.0-20230906042549-846c8a63e485/go.mod h1
 github.com/brotherlogic/recordwants v0.0.0-20230913051220-11639a80f213/go.mod h1:UqoY8w5/btVxvRzaK1224n+dkqAJzo5slEUjNrmoi/4=
 github.com/brotherlogic/recordwants v0.0.0-20230920063314-b6c8bd7331f4/go.mod h1:dgOP3HLKqWeJ8pgiRx5UcD/mMJh/4LqwN/Cl7P7J/r0=
 github.com/brotherlogic/rstore v0.31.0/go.mod h1:OvTUW9id/7lcCxTnh/0ZcvcGFLjIlHP3WQ0AdxnJyLg=
-github.com/brotherlogic/tasklist v0.0.0-20231027081055-98ce42113c72 h1:HdySol4LKWz4RJA4x6hj8oXnMcAhTJPYmnlqjo5FrAo=
-github.com/brotherlogic/tasklist v0.0.0-20231027081055-98ce42113c72/go.mod h1:MBhpwT4GXLk2S0EjMHvlLU6RIep52rCqkvwdB988sjQ=
+github.com/brotherlogic/tasklist v0.0.0-20231027111239-ef584ab4a0e7 h1:4UyDqTxy7L8vHJPv2Vr/97evldFlLVPpIfVhLu8LVjM=
+github.com/brotherlogic/tasklist v0.0.0-20231027111239-ef584ab4a0e7/go.mod h1:wef/1ivfMc0Jd/smFGVv8DkAWyqyqpog2x/sIj3i2sc=
 github.com/brotherlogic/temp v0.0.0-20210923034957-a5d1be22449e/go.mod h1:XeQMMOzb07ycXzBCbs76Ez5oMsywgNigfanPFpHf/lU=
 github.com/brotherlogic/temp v0.0.0-20211004140433-87d556b5a0c3/go.mod h1:UNltWEmymg8cmq27siHaPt+rrsAKTyKZnV9o5dSgiMs=
 github.com/brotherlogic/temp v0.0.0-20211201183401-2f3909cacc39/go.mod h1:hIA53Gj6G+Ry4zeoI3K5YZzmlXA4xspK9UEv4i9FMKU=
