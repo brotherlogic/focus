@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sort"
+	"time"
 
 	"golang.org/x/net/context"
 
@@ -26,6 +27,11 @@ func (s *Server) getNoHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb
 			issue.GetService() != "recordalerting" &&
 			issue.GetTitle() != "Incomplete Order Alert" &&
 			issue.GetService() != "gramophile" {
+			if time.Now().Weekday() == time.Friday && time.Now().Hour() < 16 {
+				if issue.GetService() != "queue" {
+					continue
+				}
+			}
 			return &pb.Focus{
 				Type:   pb.Focus_FOCUS_ON_NON_HOME_TASKS,
 				Detail: issue.GetTitle(),
