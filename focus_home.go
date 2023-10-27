@@ -34,7 +34,7 @@ func (p *prodCheck) home(ctx context.Context) error {
 
 func (s *Server) getHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
 	if time.Now().Weekday() == time.Friday && time.Now().Hour() < 16 {
-		return nil, status.Errorf(codes.FailedPrecondition, "Don't do home tasks whilst working")
+		return nil, status.Errorf(codes.FailedPrecondition, "don't do home tasks whilst working")
 	}
 
 	err := s.dialer.home(ctx)
