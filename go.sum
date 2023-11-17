@@ -2221,8 +2221,8 @@ github.com/brotherlogic/gobuildslave v0.0.0-20231020041201-2449c424b596/go.mod h
 github.com/brotherlogic/gobuildslave v0.0.0-20231027051415-c737ae9b1bdb/go.mod h1:YXDX/BtmvaR3jeFCfocvpq8YbwsM//Lbl6rnsys3aTI=
 github.com/brotherlogic/gobuildslave v0.0.0-20231103054005-b33bffbc3073/go.mod h1:7duFegAlnrbJQY1OEjaZZbKuabz2Sgk0aSoj41FBLxI=
 github.com/brotherlogic/gobuildslave v0.0.0-20231110054949-269f8cb8bc78/go.mod h1:eaZBZGvbkDlsYTzn0NZ6SaC889wFjR+Z1uZLBiAhTF4=
-github.com/brotherlogic/gobuildslave v0.0.0-20231117180144-c843d1a25f0c h1:uZ3YjTCqa2qwOyhSqV6yAhizLq3MSUbv5b/4h+autZQ=
-github.com/brotherlogic/gobuildslave v0.0.0-20231117180144-c843d1a25f0c/go.mod h1:AcNX0N8nI4pPis0sJe5MuvS6MMeR9L0o4BFdLLCGgco=
+github.com/brotherlogic/gobuildslave v0.0.0-20231117203055-b1eb2ff31d34 h1:fUG4p99vkjEioetjOiw2vHlhpEC0PorH4xxdVBlzclM=
+github.com/brotherlogic/gobuildslave v0.0.0-20231117203055-b1eb2ff31d34/go.mod h1:mZCUplX0yA/5q2Hq3/dEVpJ8u7eyyJ7wHpib9IjEkwA=
 github.com/brotherlogic/godiscogs v0.0.0-20201012230422-e6d22566e955/go.mod h1:n/6nBOsxU6shAcHwC8L557pGTmKwfdUx/zueje86vCE=
 github.com/brotherlogic/godiscogs v0.0.0-20210110190906-0bfce639dbb9/go.mod h1:n/6nBOsxU6shAcHwC8L557pGTmKwfdUx/zueje86vCE=
 github.com/brotherlogic/godiscogs v0.0.0-20210518132442-05fcf2d616b0/go.mod h1:n/6nBOsxU6shAcHwC8L557pGTmKwfdUx/zueje86vCE=
@@ -3900,8 +3900,8 @@ github.com/brotherlogic/recordwants v0.0.0-20231027115423-2c216ca0bd30/go.mod h1
 github.com/brotherlogic/recordwants v0.0.0-20231027141611-404adc2ea0b5/go.mod h1:Ha/ItsLZU4R0E8JN5sN11iR5rvS+6gbbQy821M2qVh8=
 github.com/brotherlogic/recordwants v0.0.0-20231103170853-ff13ca4800dd/go.mod h1:AB19oAzdlJCpTkM6vQGzFTZBpR5MZy596ZRovVxPeLs=
 github.com/brotherlogic/rstore v0.31.0/go.mod h1:OvTUW9id/7lcCxTnh/0ZcvcGFLjIlHP3WQ0AdxnJyLg=
-github.com/brotherlogic/tasklist v0.0.0-20231117184729-e4df24f27175 h1:tzZGNBls3jf7JJV1pGzULKmY6Jd8scPInflTsGTFhg8=
-github.com/brotherlogic/tasklist v0.0.0-20231117184729-e4df24f27175/go.mod h1:AyYH0zsFFgLjGdOF6vypH3AvUcdw6REPBsquV7xNQdY=
+github.com/brotherlogic/tasklist v0.0.0-20231117203139-856dad4014ab h1:luLbivrT0dFub2lc39oGNs8C50jPmVMoPwQV4YYg7R4=
+github.com/brotherlogic/tasklist v0.0.0-20231117203139-856dad4014ab/go.mod h1:rhjOaygKBJT0D/Nh4KGmx80D1r7eCiR/Ih/HkfVzQP4=
 github.com/brotherlogic/temp v0.0.0-20210923034957-a5d1be22449e/go.mod h1:XeQMMOzb07ycXzBCbs76Ez5oMsywgNigfanPFpHf/lU=
 github.com/brotherlogic/temp v0.0.0-20211004140433-87d556b5a0c3/go.mod h1:UNltWEmymg8cmq27siHaPt+rrsAKTyKZnV9o5dSgiMs=
 github.com/brotherlogic/temp v0.0.0-20211201183401-2f3909cacc39/go.mod h1:hIA53Gj6G+Ry4zeoI3K5YZzmlXA4xspK9UEv4i9FMKU=
