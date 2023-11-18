@@ -1453,8 +1453,8 @@ github.com/brotherlogic/datastore v0.0.0-20231027143948-d495c204589c/go.mod h1:G
 github.com/brotherlogic/datastore v0.0.0-20231027152327-854bf670897c/go.mod h1:1BALiiBXwzozxpN+3bBumMksfRdwfOdVelqr2Px4lSM=
 github.com/brotherlogic/datastore v0.0.0-20231103160805-7167e62c874b/go.mod h1:KPptXsVLGM01K2tshD6ZIpPJqhwKwrRXPvCN2WHNfuQ=
 github.com/brotherlogic/datastore v0.0.0-20231110172723-ea3e0594fc6c/go.mod h1:kwQXP0+5aKzMIrv7qtS0/qGws4St29ig6l2sxjX+mjA=
-github.com/brotherlogic/datastore v0.0.0-20231117222211-388fcf7a5013 h1:aS7WDV4iG8LFsXUBdi2aLv1hSvtZR63xi3luZWdn+5Y=
-github.com/brotherlogic/datastore v0.0.0-20231117222211-388fcf7a5013/go.mod h1:iuYIuEF50WjSRKm3Vlr0d7gC0aJQe+UEfQp/Q46KQZc=
+github.com/brotherlogic/datastore v0.0.0-20231118080847-887949da1159 h1:eN8DTOZ5Tocqufpysp6krukCxaklBVfck3MC5kBBhG0=
+github.com/brotherlogic/datastore v0.0.0-20231118080847-887949da1159/go.mod h1:6fu5ZERsTHMg0+z1Na3U6EsjmQPxpzqGXJK3gr1ifFY=
 github.com/brotherlogic/discovery v0.0.0-20200925011539-74a8dc203ba4/go.mod h1:W9XhDhsvBgeIgnOKgcWmtFilO549fuIhRMlVHiXAC9k=
 github.com/brotherlogic/discovery v0.0.0-20210531005423-1d609c4f6278/go.mod h1:W9XhDhsvBgeIgnOKgcWmtFilO549fuIhRMlVHiXAC9k=
 github.com/brotherlogic/discovery v0.0.0-20210603130245-be477d62024e/go.mod h1:W9XhDhsvBgeIgnOKgcWmtFilO549fuIhRMlVHiXAC9k=
@@ -3186,8 +3186,8 @@ github.com/brotherlogic/recordcleaner v0.0.0-20230914002451-eb0b356aebab/go.mod 
 github.com/brotherlogic/recordcleaner v0.0.0-20230921012457-dbb49fcf56e1/go.mod h1:J/UOZgmenOcNSO82GqwEXcSE0WKOY2/Dq3fGY7pfWKY=
 github.com/brotherlogic/recordcleaner v0.0.0-20230929021937-44eb34ccd5d0/go.mod h1:xfMeb6eeYwGsbsexmmmnHJjoFxHC1ercYPjXvbj7z9M=
 github.com/brotherlogic/recordcleaner v0.0.0-20231011232548-2cf921d78526/go.mod h1:0bJ3OOSSIlG33t9/eIn23AUsZi7igCtE2+iigcTTl7Y=
-github.com/brotherlogic/recordcleaner v0.0.0-20231118055319-db2f53815ddb h1:fCbGy883VusRonG/uTWopjtAUIHT9EylrKjng/ziOUs=
-github.com/brotherlogic/recordcleaner v0.0.0-20231118055319-db2f53815ddb/go.mod h1:BYB7+NWq+nD798Wi4fQGnaExATgHpKF+gevhYMrrrAc=
+github.com/brotherlogic/recordcleaner v0.0.0-20231118080805-c0228713f494 h1:en15hGA6132VHSEWCWUCbuCAoiY9luAEdMlCtUcb0hQ=
+github.com/brotherlogic/recordcleaner v0.0.0-20231118080805-c0228713f494/go.mod h1:JX/rYewC1Ql7Tp645p4Bkmg/AQ357KZWAVMkTw9dKVg=
 github.com/brotherlogic/recordcollection v0.0.0-20201126210339-d58e20a26a3b/go.mod h1:RJ9uMkuFSC+5ktJ7XSkqhZtDsjcfP8OdPkJ00pSuYUA=
 github.com/brotherlogic/recordcollection v0.0.0-20210504142021-d0fe81ea4655/go.mod h1:RJ9uMkuFSC+5ktJ7XSkqhZtDsjcfP8OdPkJ00pSuYUA=
 github.com/brotherlogic/recordcollection v0.0.0-20210518133854-294d63ff8e4c/go.mod h1:RJ9uMkuFSC+5ktJ7XSkqhZtDsjcfP8OdPkJ00pSuYUA=
