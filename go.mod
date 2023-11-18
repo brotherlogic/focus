@@ -9,7 +9,7 @@ require (
 	github.com/brotherlogic/goserver v0.0.0-20230726200050-779ae6811580
 	github.com/brotherlogic/recordcleaner v0.0.0-20231117190236-cc198244ea97
 	github.com/brotherlogic/recordcollection v0.0.0-20231114064337-5682ee245cd8
-	github.com/brotherlogic/tasklist v0.0.0-20231117203139-856dad4014ab
+	github.com/brotherlogic/tasklist v0.0.0-20231117222135-fecce37c0a00
 	github.com/prometheus/client_golang v1.17.0
 	golang.org/x/net v0.18.0
 	google.golang.org/grpc v1.59.0
@@ -19,9 +19,9 @@ require (
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/brotherlogic/buildserver v0.0.0-20231115055828-e8171f20a5bd // indirect
-	github.com/brotherlogic/datastore v0.0.0-20231117181215-73770aef87d7 // indirect
+	github.com/brotherlogic/datastore v0.0.0-20231117222211-388fcf7a5013 // indirect
 	github.com/brotherlogic/discovery v0.0.0-20231116222621-20441afdc3d9 // indirect
-	github.com/brotherlogic/gobuildslave v0.0.0-20231117203055-b1eb2ff31d34 // indirect
+	github.com/brotherlogic/gobuildslave v0.0.0-20231117223014-9630d5b0b31b // indirect
 	github.com/brotherlogic/keystore v0.0.0-20231112195839-4b61dfa63b0a // indirect
 	github.com/brotherlogic/lock v0.0.0-20231112210433-e8ed15e59773 // indirect
 	github.com/brotherlogic/logging v0.0.0-20231117035232-c3d8fe5bd543 // indirect
