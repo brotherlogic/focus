@@ -25,5 +25,5 @@ func main() {
 		log.Fatalf("Bad focus: %v", err)
 	}
 
-	fmt.Printf("%v (%v)\n", focus.GetFocus().GetDetail(), focus.GetFocus().GetLink())
+	fmt.Printf("%v (%v) [%v]\n", focus.GetFocus().GetDetail(), focus.GetFocus().GetLink(), focus.Focus.GetType())
 }
