@@ -24,6 +24,7 @@ func (s *Server) getNoHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb
 
 	for _, issue := range resp.GetIssues() {
 		if issue.GetService() != "home" &&
+			issue.GetService() != "cdprocessor" &&
 			issue.GetService() != "recordalerting" &&
 			issue.GetTitle() != "Incomplete Order Alert" &&
 			issue.GetService() != "gramophile" {
