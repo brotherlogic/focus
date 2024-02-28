@@ -33,7 +33,7 @@ func (p *prodCheck) home(ctx context.Context) error {
 }
 
 func (s *Server) getHomeTaskFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
-	if time.Now().Weekday() == time.Friday && time.Now().Hour() < 16 {
+	if time.Now().Weekday() == time.Friday && time.Now().Hour() < 18 {
 		return nil, status.Errorf(codes.FailedPrecondition, "don't do home tasks whilst working")
 	}
 
