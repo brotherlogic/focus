@@ -14,11 +14,17 @@ import (
 
 func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus, error) {
 	if time.Now().Weekday() == time.Saturday || time.Now().Weekday() == time.Sunday {
-		return nil, fmt.Errorf("not the time for deep focus")
-	}
-
-	if time.Now().Hour() == 19 || time.Now().Hour() < 16 {
-		return nil, fmt.Errorf("not the time for deep focus")
+		out := false
+		if time.Now().Hour() > 14 && time.Now().Hour() < 16 {
+			out = true
+		}
+		if !out {
+			return nil, fmt.Errorf("not the time for deep focus")
+		}
+	} else {
+		if time.Now().Hour() == 19 || time.Now().Hour() < 16 {
+			return nil, fmt.Errorf("not the time for deep focus")
+		}
 	}
 
 	resp, err := s.ghClient.GetIssues(ctx, &pbgh.GetAllRequest{})
@@ -62,7 +68,10 @@ func (s *Server) getDeepFocus(ctx context.Context, config *pb.Config) (*pb.Focus
 	}
 
 	for _, issue := range resp.GetIssues() {
-		if issue.GetService() == "gramophile" || issue.GetService() == "printqueue" {
+		if issue.GetService() == "gramophile" ||
+			issue.GetService() == "printqueue" ||
+			issue.GetService() == "fokus" ||
+			issue.GetService() == "mdb" {
 			return &pb.Focus{
 				Type:   pb.Focus_FOCUS_ON_NON_HOME_TASKS,
 				Detail: issue.GetTitle(),
