@@ -4,11 +4,11 @@ go 1.22.1
 
 require (
 	github.com/brotherlogic/dstore v0.0.0-20240621172204-4f82d384fb46
-	github.com/brotherlogic/githubcard v0.0.0-20240621180625-77c981a4cfb0
+	github.com/brotherlogic/githubcard v0.0.0-20240621181807-f42c6135f9a1
 	github.com/brotherlogic/godiscogs v0.0.0-20240619222044-69e643325529
 	github.com/brotherlogic/goserver v0.0.0-20240303220030-80da220f0393
-	github.com/brotherlogic/recordcleaner v0.0.0-20240621181344-b8ebaddc7038
-	github.com/brotherlogic/recordcollection v0.0.0-20240621181100-b9cf0589bd42
+	github.com/brotherlogic/recordcleaner v0.0.0-20240621191840-e9f53952756b
+	github.com/brotherlogic/recordcollection v0.0.0-20240621182128-16bf547d55ae
 	github.com/brotherlogic/tasklist v0.0.0-20240621181127-0de4693f87c7
 	github.com/prometheus/client_golang v1.19.1
 	golang.org/x/net v0.26.0
