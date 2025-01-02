@@ -3,12 +3,12 @@ module github.com/brotherlogic/focus
 go 1.23.2
 
 require (
-	github.com/brotherlogic/dstore v0.0.0-20250102012613-eb3a04ca3296
+	github.com/brotherlogic/dstore v0.0.0-20250102022707-f1c659ea79c7
 	github.com/brotherlogic/githubcard v0.0.0-20250101233600-f7f420ccd01c
 	github.com/brotherlogic/godiscogs v0.0.0-20240823195726-9a8d322e6898
 	github.com/brotherlogic/goserver v0.0.0-20240826215223-fccbac46b3d4
-	github.com/brotherlogic/recordcleaner v0.0.0-20250101223737-315495d0789e
-	github.com/brotherlogic/recordcollection v0.0.0-20250101223737-5c12283340fd
+	github.com/brotherlogic/recordcleaner v0.0.0-20250102014110-96673483710b
+	github.com/brotherlogic/recordcollection v0.0.0-20250102013745-9ff261bc8367
 	github.com/brotherlogic/tasklist v0.0.0-20250101233557-df31c7670617
 	github.com/prometheus/client_golang v1.20.5
 	golang.org/x/net v0.33.0
