@@ -3,7 +3,7 @@ module github.com/brotherlogic/focus
 go 1.23.2
 
 require (
-	github.com/brotherlogic/dstore v0.0.0-20250123044424-08740a8a6a68
+	github.com/brotherlogic/dstore v0.0.0-20250130045604-092b9bc7f420
 	github.com/brotherlogic/githubcard v0.0.0-20250128230552-11f1c9df3b69
 	github.com/brotherlogic/godiscogs v0.0.0-20250104170211-890486df49c0
 	github.com/brotherlogic/goserver v0.0.0-20250123145056-95c6fbb2310a
