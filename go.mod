@@ -9,7 +9,7 @@ require (
 	github.com/brotherlogic/goserver v0.0.0-20250123145056-95c6fbb2310a
 	github.com/brotherlogic/recordcleaner v0.0.0-20250602200555-4c229b9b68fd
 	github.com/brotherlogic/recordcollection v0.0.0-20250602200217-4171706ce279
-	github.com/brotherlogic/tasklist v0.0.0-20250602004046-206e478622be
+	github.com/brotherlogic/tasklist v0.0.0-20250602201018-ba611c8658e3
 	github.com/prometheus/client_golang v1.22.0
 	golang.org/x/net v0.40.0
 	google.golang.org/grpc v1.72.2
