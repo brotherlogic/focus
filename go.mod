@@ -7,7 +7,7 @@ require (
 	github.com/brotherlogic/githubcard v0.0.0-20250621142930-8f801a304906
 	github.com/brotherlogic/godiscogs v0.0.0-20250429182651-404c7473edf8
 	github.com/brotherlogic/goserver v0.0.0-20250608182006-4ace595931a5
-	github.com/brotherlogic/recordcleaner v0.0.0-20250621171727-ef05a01c7201
+	github.com/brotherlogic/recordcleaner v0.0.0-20250621190922-f25db8042356
 	github.com/brotherlogic/recordcollection v0.0.0-20250617153857-d1849643b935
 	github.com/brotherlogic/tasklist v0.0.0-20250621143237-d57edc1f342b
 	github.com/prometheus/client_golang v1.22.0
